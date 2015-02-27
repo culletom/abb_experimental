@@ -1,3 +1,7 @@
 <launch>
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find abb_irb120_support)/urdf/irb120.xacro'" />
+  <arg name="gazebo" default="false"/>
+
+  <param if="$(arg gazebo)" name="robot_description" command="$(find xacro)/xacro.py '$(find abb_irb120_support)/urdf/irb120_gazebo.xacro'" />
+  <param unless="$(arg gazebo)" name="robot_description" command="$(find xacro)/xacro.py '$(find abb_irb120_support)/urdf/irb120.xacro'" />
+
 </launch>
