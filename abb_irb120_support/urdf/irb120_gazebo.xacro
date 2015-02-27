@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<robot name="abb_irb120" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_gazebo_macro.xacro"/>
+  <xacro:include filename="$(find abb_irb120_support)/urdf/irb120.gazebo" />
+  <xacro:include filename="$(find abb_irb120_support)/urdf/materials.xacro" />
+  <xacro:include filename="$(find abb_irb120_support)/urdf/irb120_transmission.xacro"/>
+	
+  <xacro:abb_irb120 prefix=""/>
+  <xacro:abb_irb120_transmission prefix=""/>
+
+  <!-- Used for fixing robot to Gazebo world -->
+  <link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+    
+</robot>
