@@ -19,6 +19,11 @@
   <!-- Allow user to specify database location -->
   <arg name="db_path" default="$(find abb_irb120_moveit_config)/default_warehouse_mongo_db" />
 
+  <!-- The "gazebo" argument controls whether we are connecting to a loaded Gazebo model -->
+  <!-- If connecting to Gazebo, need to remap the joint_trajectory_action-->
+  <arg name="gazebo" default="false" />
+  <remap if="$(arg gazebo)" from="/joint_trajectory_action" to="/arm_controller/follow_joint_trajectory"/>
+
   <!-- load the robot_description parameter before launching ROS-I nodes -->
   <include file="$(find abb_irb120_moveit_config)/launch/planning_context.launch" >
     <arg name="load_robot_description" value="true" />
@@ -26,7 +31,7 @@
 
   <!-- run the robot simulator and action interface nodes -->
   <group if="$(arg sim)">
-    <include file="$(find industrial_robot_simulator)/launch/robot_interface_simulator.launch" />
+    <include unless="$(arg gazebo)" file="$(find industrial_robot_simulator)/launch/robot_interface_simulator.launch" />
   </group>
 
   <!-- run the "real robot" interface nodes -->
@@ -39,7 +44,7 @@
   </group>
 
   <!-- publish the robot state (tf transforms) -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node unless="$(arg gazebo)" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <include file="$(find abb_irb120_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
