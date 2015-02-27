@@ -1,14 +1,13 @@
-<?xml version="1.0"?>
 <package>
   <name>abb_irb120_gazebo</name>
   <version>0.0.1</version>
   <description>
     <p>
-      Gazebo wrapper for the ABB IRB 120 base model.
+      Gazebo wrapper for the ABB IRB 120 base model (and variants).
     </p>
     <p>
       This package contains the configuration data and launch files required to simulate the ABB
-      IRB 120 manipulator in Gazebo. This currently only includes the base model.
+      IRB 120 manipulator in Gazebo. This includes the base model (120) and the 120T.
     </p>
     <p>
       Before using any of the configuration files included in this package, be sure to check 

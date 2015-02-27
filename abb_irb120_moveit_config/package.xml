@@ -12,6 +12,7 @@
     </p>
   </description>
   <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
+  <author>Kevin Kelly (Trinity College Dublin)</author>
   <maintainer email="culletom@tcd.ie">Mark Culleton (Trinity College Dublin)</maintainer>
 
   <license>BSD</license>
