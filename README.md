@@ -24,5 +24,8 @@ Finally, launch moveit! and ensure that it is configured to talk to the gazebo c
 ```roslaunch abb_irb120_moveit_config moveit_planning_execution gazebo:=true``` 
 
 
+Note: 'No p gain specified for pid' error messages which appear during gazebo startup can be ignored. These are a result of using position contollers in ROS Hydro, as discussed in [ros-industrial/universal_robot#179][].
+
 [ROS-Industrial]: http://www.ros.org/wiki/Industrial
 [ROS wiki]: http://ros.org/wiki/abb_experimental
+[ros-industrial/universal_robot#179]: https://github.com/ros-industrial/universal_robot/pull/179
