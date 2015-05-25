@@ -95,12 +95,5 @@
     </plugin>
   </gazebo>  
 
-  <!-- Used for fixing robot to Gazebo world -->
-  <link name="world"/>
-  <joint name="${prefix}fixed" type="fixed">
-    <parent link="world"/>
-    <child link="${prefix}base_link"/>
-  </joint>
-
   </xacro:macro>
 </robot>
