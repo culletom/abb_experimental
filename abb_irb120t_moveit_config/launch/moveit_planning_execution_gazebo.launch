@@ -1,6 +1,6 @@
 <launch>
   <!-- The planning and execution components of MoveIt! configured to run
-       against a Gazebo based, ros_control compatible simulation of the IRB 120T.
+       against a Gazebo based, ros_control compatible simulation of the IRB 120.
 
        This depends on the corresponding 'abb_irb120_gazebo' pkg to be installed
        first. This dependency is not expressed in the MoveIt config pkg manifest,
@@ -10,13 +10,12 @@
        Instead, installation is left to the user, as a kind of poor-mans optional
        dependency.
 
-       Finally, these launch files start everything: Gazebo, MoveIt, RViz. They
-       also perform all required steps to configure intermediary and required
-       nodes, and present the user with a plan-ready RViz session out-of-the-box.
+       Finally, this launch file assumes that gazebo is already running and that 
+       the IRB 120 and ros_controllers are loaded. This can be achieved by 
+       executing the the following command:
 
-       More advanced users may wish to separate some of the included launch files
-       out into individual steps, so as to improve modularity of the (runtime)
-       system.
+       roslaunch abb_irb120_gazebo irb120_gazebo.launch
+
   -->
   <rosparam command="load" file="$(find abb_irb120_support)/config/joint_names_irb120t.yaml" />
 
@@ -27,15 +26,6 @@
 
   <!-- gazebo_ros_control is configured to start its action server under a different name -->
   <remap from="/joint_trajectory_action" to="/arm_controller/follow_joint_trajectory" />
-
-  <!-- load up Gazebo, load the urdf and spawn the model in Gazebo -->
-  <include file="$(find abb_irb120_gazebo)/launch/irb120t_gazebo.launch" />
-
-  <!-- init and start Gazebo ros_control interface -->
-  <include file="$(find abb_irb120_gazebo)/launch/irb120_control.launch" />
-
-  <!-- publish the robot state (tf transforms) -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <!-- don't let planning_context load description, we've already done it -->
   <include file="$(find abb_irb120t_moveit_config)/launch/planning_context.launch">

@@ -7,24 +7,20 @@
 This repo holds source code for all versions.
 
 
----
+### Using Moveit! with Gazebo Simulator
 
-__Using Moveit! with Gazebo Simulator__
+1. Bring the robot model into gazebo and load the ros_control controllers:
+   ```roslaunch abb_irb120_gazebo irb120_gazebo.launch``` 
 
-First bring the robot model into gazebo:
-
-```roslaunch abb_irb120_gazebo irb120_gazebo.launch``` 
-
-Next load the ros_control controllers, which will be used to actuate the joints of the gazebo model:
-
-```roslaunch abb_irb120_gazebo irb120_control.launch``` 
-
-Finally, launch moveit! and ensure that it is configured to talk to the gazebo controllers:
-
-```roslaunch abb_irb120_moveit_config moveit_planning_execution gazebo:=true``` 
+2. Launch moveit! and ensure that it is configured to run alongside Gazebo:
+```roslaunch abb_irb120_moveit_config moveit_planning_execution_gazebo``` 
 
 
-Note: 'No p gain specified for pid' error messages which appear during gazebo startup can be ignored. These are a result of using position contollers in ROS Hydro, as discussed in [ros-industrial/universal_robot#179][].
+
+**Notes:**
+
+1. 'No p gain specified for pid' error messages which appear during gazebo startup can be ignored. These are a result of using position contollers in ROS Hydro, as discussed in [ros-industrial/universal_robot#179][].
+2. More advanced users may wish to substitute the first step with seperate launch files, so as to improve modularity of the (runtime) system.
 
 [ROS-Industrial]: http://www.ros.org/wiki/Industrial
 [ROS wiki]: http://ros.org/wiki/abb_experimental
