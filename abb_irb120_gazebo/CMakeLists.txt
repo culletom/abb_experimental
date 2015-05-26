@@ -5,6 +5,7 @@ find_package(catkin REQUIRED)
 
 catkin_package()
 
-install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-install(DIRECTORY controller DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-install(DIRECTORY worlds DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+foreach(dir config launch urdf worlds)
+   install(DIRECTORY ${dir}/
+      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach()

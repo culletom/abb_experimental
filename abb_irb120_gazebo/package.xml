@@ -3,16 +3,18 @@
   <version>0.0.1</version>
   <description>
     <p>
-      Gazebo wrapper for the ABB IRB 120 base model (and variants).
+      ROS-Industrial Gazebo support package for the ABB IRB 120 (and variants).
     </p>
     <p>
-      This package contains the configuration data and launch files required to simulate the ABB
-      IRB 120 manipulator in Gazebo. This includes the base model (120) and the 120T.
+      This package contains the configuration data and launch files required
+      to simulate the ABB IRB 120 manipulator in Gazebo. This includes the base
+      model and the 120T.
     </p>
     <p>
-      Before using any of the configuration files included in this package, be sure to check 
-      they are correct for the particular robot model and configuration you intend to use them with.
-    </p>      
+      Before using any of the configuration files included in this package, be
+      sure to check they are correct for the particular robot model and
+      configuration you intend to use them with.
+    </p>
   </description>
   <author email="culletom@tcd.ie">Mark Culleton (Trinity College Dublin)</author>
   <author>Kevin Kelly (Trinity College Dublin)</author>
@@ -24,17 +26,14 @@
   <url type="repository">https://github.com/ros-industrial/abb_experimental</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+
   <run_depend>abb_irb120_support</run_depend>
-  <run_depend>gazebo</run_depend>  
-  <run_depend>gazebo_ros_pkgs</run_depend>
+  <run_depend>gazebo</run_depend>
   <run_depend>gazebo_ros</run_depend>
   <run_depend>gazebo_ros_control</run_depend>
-  <run_depend>ros_controllers</run_depend>
+  <run_depend>gazebo_ros_pkgs</run_depend>
   <run_depend>joint_state_controller</run_depend>
   <run_depend>joint_trajectory_controller</run_depend>
-  <run_depend>effort_controllers</run_depend>
   <run_depend>robot_state_publisher</run_depend>
-
-  <export>
-  </export>
+  <run_depend>ros_controllers</run_depend>
 </package>
