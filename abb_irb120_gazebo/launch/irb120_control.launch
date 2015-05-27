@@ -2,10 +2,10 @@
 
   <!-- load the joint state controller -->
   <rosparam file="$(find abb_irb120_gazebo)/config/joint_state_controller.yaml" command="load" />
-  <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller" />
+  <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller --shutdown-timeout 1" />
 
   <!-- load the arm controller -->
   <rosparam file="$(find abb_irb120_gazebo)/config/irb120_arm_controller.yaml" command="load" />
-  <node name="abb_irb120_controller_spawner" pkg="controller_manager" type="spawner" args="arm_controller" />
+  <node name="abb_irb120_controller_spawner" pkg="controller_manager" type="spawner" args="arm_controller --shutdown-timeout 1" />
   
 </launch>
